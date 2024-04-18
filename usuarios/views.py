@@ -35,6 +35,7 @@ def cadastro(request):
         
         return redirect('/usuarios/login')
 
+
 def login_view(request):
     if request.method == "GET":
         return render(request, 'login.html')
@@ -49,4 +50,9 @@ def login_view(request):
             return redirect('/pacientes/home')
 
         messages.add_message(request, constants.ERROR, 'Usuário ou senha incorretos')
-        return redirect('/usuarios/login')      
+        return redirect('/usuarios/login')
+
+
+def sair(request):
+    auth.logout(request)
+    return redirect('/usuarios/login')
